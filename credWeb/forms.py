@@ -1,6 +1,7 @@
 from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth.models import User
 from django import forms
+from .models import Record
 
 
 class SingnUpForm(UserCreationForm):
@@ -39,16 +40,20 @@ class AddRecordForm(forms.ModelForm):
     firstName = forms.CharField(required=True, widget=forms.widgets.TextInput(
         attrs={"placeholder": "First Name", "class": "form-control"}), label='')
     lastName = forms.CharField(required=True, widget=forms.widgets.TextInput(
-        attrs={"placeholder": "First Name", "class": "form-control"}), label='')
+        attrs={"placeholder": "Last Name", "class": "form-control"}), label='')
     email = forms.CharField(required=True, widget=forms.widgets.TextInput(
-        attrs={"placeholder": "First Name", "class": "form-control"}), label='')
+        attrs={"placeholder": "Email", "class": "form-control"}), label='')
     phone = forms.CharField(required=True, widget=forms.widgets.TextInput(
-        attrs={"placeholder": "First Name", "class": "form-control"}), label='')
+        attrs={"placeholder": "Phone", "class": "form-control"}), label='')
     address = forms.CharField(required=True, widget=forms.widgets.TextInput(
-        attrs={"placeholder": "First Name", "class": "form-control"}), label='')
+        attrs={"placeholder": "Address", "class": "form-control"}), label='')
     city = forms.CharField(required=True, widget=forms.widgets.TextInput(
-        attrs={"placeholder": "First Name", "class": "form-control"}), label='')
+        attrs={"placeholder": "City", "class": "form-control"}), label='')
     state = forms.CharField(required=True, widget=forms.widgets.TextInput(
-        attrs={"placeholder": "First Name", "class": "form-control"}), label='')
+        attrs={"placeholder": "State", "class": "form-control"}), label='')
     zipcode = forms.CharField(required=True, widget=forms.widgets.TextInput(
-        attrs={"placeholder": "First Name", "class": "form-control"}), label='')
+        attrs={"placeholder": "Zipcode", "class": "form-control"}), label='')
+
+    class Meta:
+        model = Record
+        exclude = ('user',)
