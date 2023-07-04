@@ -33,3 +33,22 @@ class SingnUpForm(UserCreationForm):
         self.fields['password2'].widget.attrs['placeholder'] = 'Confirm Password'
         self.fields['password2'].label = ''
         self.fields['password2'].help_text = '<span class="form-text text-muted"><small>Enter the same password as before, for verification.</small></span>'
+
+
+class AddRecordForm(forms.ModelForm):
+    firstName = forms.CharField(required=True, widget=forms.widgets.TextInput(
+        attrs={"placeholder": "First Name", "class": "form-control"}), label='')
+    lastName = forms.CharField(required=True, widget=forms.widgets.TextInput(
+        attrs={"placeholder": "First Name", "class": "form-control"}), label='')
+    email = forms.CharField(required=True, widget=forms.widgets.TextInput(
+        attrs={"placeholder": "First Name", "class": "form-control"}), label='')
+    phone = forms.CharField(required=True, widget=forms.widgets.TextInput(
+        attrs={"placeholder": "First Name", "class": "form-control"}), label='')
+    address = forms.CharField(required=True, widget=forms.widgets.TextInput(
+        attrs={"placeholder": "First Name", "class": "form-control"}), label='')
+    city = forms.CharField(required=True, widget=forms.widgets.TextInput(
+        attrs={"placeholder": "First Name", "class": "form-control"}), label='')
+    state = forms.CharField(required=True, widget=forms.widgets.TextInput(
+        attrs={"placeholder": "First Name", "class": "form-control"}), label='')
+    zipcode = forms.CharField(required=True, widget=forms.widgets.TextInput(
+        attrs={"placeholder": "First Name", "class": "form-control"}), label='')
