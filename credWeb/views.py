@@ -2,11 +2,13 @@ from django.shortcuts import render, redirect
 from django.contrib.auth import authenticate, login, logout
 from django.contrib import messages
 from .forms import SingnUpForm
-
+from .models import Record
 # Create your views here.
 
 
 def home(request):
+    records = Record.objects.all()
+
     if request.method == 'POST':
         username = request.POST['username']
         password = request.POST['password']
@@ -22,7 +24,7 @@ def home(request):
                 request, "There was an error loggin In, please try again...")
             return redirect('home')
     else:
-        return render(request, 'home.html', {})
+        return render(request, 'home.html', {'records': records})
 
 
 def logoutUser(request):
@@ -50,3 +52,13 @@ def registerUser(request):
         return render(request, 'register.html', {'form': form})
 
     return render(request, 'register.html', {'form': form})
+
+
+def customerRecord(request, pk):
+    if request.user.is_authenticated:
+        # Look up records
+        customerRecord = Record.objects.get(id=pk)
+        return render(request, 'record.html', {'customerRecord': customerRecord})
+    else:
+        messages.success(request, "You must login to view that page...")
+        return redirect('home')
